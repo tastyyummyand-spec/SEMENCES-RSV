@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Semences — Réserve de l'Éternel</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --bg:     #090B10;
+  --card:   #111520;
+  --card2:  #161B27;
+  --gold:   #C9973A;
+  --gold-l: #E4B455;
+  --gold-d: #8B6018;
+  --t1:     #EDE8DF;
+  --t2:     #8A8070;
+  --t3:     #4A4438;
+  --border: rgba(201,151,58,0.16);
+  --bdr2:   rgba(255,255,255,0.05);
+}
+
+html,body{
+  font-family:'Sora',sans-serif;
+  background:var(--bg);
+  color:var(--t1);
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  width:100%;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  top:-300px;left:50%;
+  transform:translateX(-50%);
+  width:700px;height:700px;
+  background:radial-gradient(circle,rgba(201,151,58,0.07) 0%,transparent 65%);
+  pointer-events:none;
+  z-index:0;
+}
+
+.page{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:440px;
+  margin:0 auto;
+  padding-bottom:3rem;
+}
+
+/* ══ HEADER ══ */
+.header{
+  padding:3rem 1.5rem 2.5rem;
+  text-align:center;
+  position:relative;
+}
+.header::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold-d) 20%,var(--gold-l) 50%,var(--gold-d) 80%,transparent);
+}
+
+/* Logo */
+.logo-wrap{
+  position:relative;
+  width:88px;height:88px;
+  margin:0 auto 1.5rem;
+}
+.logo-spin{
+  position:absolute;inset:-4px;
+  border-radius:50%;
+  background:conic-gradient(from 0deg,transparent,var(--gold-d) 20%,var(--gold-l) 50%,var(--gold-d) 80%,transparent);
+  animation:spin 8s linear infinite;
+  opacity:.6;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+.logo-mask{
+  position:relative;
+  width:88px;height:88px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--bg);
+  background:var(--card2);
+}
+.logo-mask img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Pill */
+.pill{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(201,151,58,0.08);
+  border:1px solid rgba(201,151,58,0.2);
+  border-radius:100px;
+  padding:5px 16px;
+  font-size:9px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:1.3rem;
+  white-space:nowrap;
+}
+.pill-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 6px var(--gold);
+  flex-shrink:0;
+}
+
+/* Title — responsive via clamp */
+.big-title{
+  font-weight:700;
+  font-size:clamp(2.4rem, 12vw, 4rem);
+  letter-spacing:.14em;
+  line-height:1;
+  margin-bottom:.6rem;
+  background:linear-gradient(160deg,#F5EDD8 20%,var(--gold-l) 60%,var(--gold) 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:clip;
+}
+
+.verse-wrap{
+  margin:0.4rem auto 0;
+  padding:1rem 1.25rem;
+  background:rgba(201,151,58,0.05);
+  border:1px solid rgba(201,151,58,0.1);
+  border-radius:12px;
+  max-width:320px;
+}
+.verse-text{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:12.5px;
+  color:var(--t2);
+  line-height:1.65;
+}
+.verse-ref{
+  display:block;
+  font-family:'Sora',sans-serif;
+  font-style:normal;
+  font-size:9.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);
+  margin-top:6px;opacity:.8;
+}
+
+/* ══ BODY ══ */
+.body{padding:0 1.25rem;}
+
+/* Bene card */
+.bene{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:1.125rem 1.25rem;
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:2rem;
+  position:relative;overflow:hidden;
+}
+.bene::before{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(201,151,58,.07),transparent 55%);
+  pointer-events:none;
+}
+.bene::after{
+  content:'';
+  position:absolute;
+  left:0;top:15%;bottom:15%;
+  width:3px;
+  background:linear-gradient(to bottom,transparent,var(--gold-l),transparent);
+  border-radius:0 3px 3px 0;
+}
+.bene-av{
+  width:50px;height:50px;
+  border-radius:14px;
+  background:linear-gradient(135deg,var(--gold-d),var(--gold-l));
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;font-weight:700;
+  color:var(--bg);
+  flex-shrink:0;
+  box-shadow:0 4px 16px rgba(201,151,58,0.25);
+}
+.bene-label{
+  font-size:9.5px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:var(--t3);margin-bottom:4px;
+}
+.bene-name{
+  font-size:13px;font-weight:600;
+  color:var(--t1);line-height:1.35;
+}
+
+/* Section head */
+.sec{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:1rem;
+}
+.sec-txt{
+  font-size:9.5px;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--t3);white-space:nowrap;
+}
+.sec-line{
+  flex:1;height:1px;
+  background:linear-gradient(to right,rgba(255,255,255,0.06),transparent);
+}
+
+/* ══ PAY BUTTONS ══ */
+.pay-btn{
+  display:flex;align-items:center;gap:14px;
+  width:100%;
+  padding:1.1rem 1.1rem 1.1rem 1rem;
+  border-radius:18px;
+  border:1px solid var(--bdr2);
+  text-decoration:none;
+  margin-bottom:10px;
+  background:var(--card);
+  transition:transform .15s,border-color .15s,box-shadow .15s;
+  position:relative;overflow:hidden;
+  -webkit-tap-highlight-color:transparent;
+}
+.pay-btn:last-of-type{margin-bottom:0;}
+.pay-btn::before{
+  content:'';
+  position:absolute;
+  top:0;left:-120%;width:70%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.035),transparent);
+  transition:left .5s ease;
+}
+.pay-btn:hover::before{left:130%;}
+.pay-btn:hover{transform:translateY(-2px);}
+.pay-btn:active{transform:scale(.975);}
+
+.btn-wave{border-color:rgba(59,189,228,.18);}
+.btn-wave:hover{border-color:rgba(59,189,228,.38);box-shadow:0 8px 28px rgba(59,189,228,.08);}
+.btn-wave .op-name{color:#3ECFEE;}
+.btn-wave .op-num{color:rgba(62,207,238,.55);}
+.btn-wave .chip{background:rgba(59,189,228,.1);color:#3ECFEE;border-color:rgba(59,189,228,.2);}
+.btn-wave .arrow{color:#3ECFEE;}
+
+.btn-om{border-color:rgba(255,110,0,.18);}
+.btn-om:hover{border-color:rgba(255,110,0,.38);box-shadow:0 8px 28px rgba(255,110,0,.08);}
+.btn-om .op-name{color:#FF924D;}
+.btn-om .op-num{color:rgba(255,146,77,.55);}
+.btn-om .chip{background:rgba(255,110,0,.1);color:#FF924D;border-color:rgba(255,110,0,.2);}
+.btn-om .arrow{color:#FF924D;}
+
+.btn-moov{border-color:rgba(244,121,32,.18);}
+.btn-moov:hover{border-color:rgba(244,121,32,.38);box-shadow:0 8px 28px rgba(244,121,32,.08);}
+.btn-moov .op-name{color:#F78C3E;}
+.btn-moov .op-num{color:rgba(247,140,62,.55);}
+.btn-moov .chip{background:rgba(244,121,32,.1);color:#F78C3E;border-color:rgba(244,121,32,.2);}
+.btn-moov .arrow{color:#F78C3E;}
+
+.logo-box{
+  width:54px;height:54px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;overflow:hidden;
+}
+.logo-box img{
+  width:100%;height:100%;
+  object-fit:contain;
+  padding:5px;
+  display:block;
+}
+
+.btn-txt{flex:1;min-width:0;}
+.op-name{font-size:14.5px;font-weight:600;letter-spacing:.01em;margin-bottom:3px;}
+.op-num{font-size:11.5px;font-weight:400;letter-spacing:.02em;}
+
+.btn-r{
+  display:flex;flex-direction:column;
+  align-items:flex-end;gap:7px;flex-shrink:0;
+}
+.chip{
+  font-size:8.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:3px 10px;border-radius:100px;
+  border:1px solid;
+}
+.arrow{font-size:22px;font-weight:200;line-height:1;}
+
+/* ══ FOOTER ══ */
+.footer{
+  margin-top:2.5rem;
+  padding:0 1.25rem;
+  text-align:center;
+}
+.footer-line{
+  height:1px;
+  background:linear-gradient(to right,transparent,var(--border),transparent);
+  margin-bottom:1.5rem;
+}
+.footer-diamonds{
+  display:flex;align-items:center;
+  justify-content:center;gap:8px;
+  margin-bottom:.9rem;
+}
+.diam{
+  width:6px;height:6px;
+  transform:rotate(45deg);
+  background:var(--gold);opacity:.3;
+}
+.diam.main{opacity:.6;width:8px;height:8px;}
+.foot-verse{
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:13px;color:var(--t2);
+  line-height:1.65;margin-bottom:6px;
+}
+.foot-ref{
+  font-size:9.5px;font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);opacity:.65;
+}
+
+/* ══ ANIMATIONS ══ */
+@keyframes rise{
+  from{opacity:0;transform:translateY(20px);}
+  to  {opacity:1;transform:translateY(0);}
+}
+.header   {animation:rise .55s ease both;}
+.bene     {animation:rise .55s .1s  ease both;opacity:0;}
+.btn-wave {animation:rise .55s .18s ease both;opacity:0;}
+.btn-om   {animation:rise .55s .26s ease both;opacity:0;}
+.btn-moov {animation:rise .55s .34s ease both;opacity:0;}
+.footer   {animation:rise .55s .42s ease both;opacity:0;}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="logo-wrap">
+      <div class="logo-spin"></div>
+      <div class="logo-mask">
+        <img src="images/LOGO RSV.png" alt="Réserve de l'Éternel">
+      </div>
+    </div>
+    <div class="pill">
+      <span class="pill-dot"></span>
+      Réserve de l'Éternel &nbsp;·&nbsp; Ésaïe 42:6
+    </div>
+    <div class="big-title">SEMENCES</div>
+    <div class="verse-wrap">
+      <p class="verse-text">"Que chacun donne comme il l'a résolu en son cœur"</p>
+      <span class="verse-ref">2 Corinthiens 9:7</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="bene">
+      <div class="bene-av">AA</div>
+      <div>
+        <div class="bene-label">Bénéficiaire</div>
+        <div class="bene-name">Amangoua Akouba Méliane Océane</div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <span class="sec-txt">Choisir un mode de paiement</span>
+      <span class="sec-line"></span>
+    </div>
+
+    <a href="tel:+2250788403774" class="pay-btn btn-wave">
+      <div class="logo-box">
+        <img src="images/logo_wave_circle_818.png" alt="Wave">
+      </div>
+      <div class="btn-txt">
+        <div class="op-name">Wave</div>
+        <div class="op-num">+225 07 88 40 37 74</div>
+      </div>
+      <div class="btn-r">
+        <span class="chip">Mobile</span>
+        <span class="arrow">›</span>
+      </div>
+    </a>
+
+    <a href="tel:+2250788403774" class="pay-btn btn-om">
+      <div class="logo-box">
+        <img src="images/om.png" alt="Orange Money">
+      </div>
+      <div class="btn-txt">
+        <div class="op-name">Orange Money</div>
+        <div class="op-num">+225 07 88 40 37 74</div>
+      </div>
+      <div class="btn-r">
+        <span class="chip">Mobile</span>
+        <span class="arrow">›</span>
+      </div>
+    </a>
+
+    <a href="tel:+2250140858633" class="pay-btn btn-moov">
+      <div class="logo-box">
+        <img src="images/moov-money.png" alt="Moov Money">
+      </div>
+      <div class="btn-txt">
+        <div class="op-name">Moov Money</div>
+        <div class="op-num">+225 01 40 85 86 33</div>
+      </div>
+      <div class="btn-r">
+        <span class="chip">Mobile</span>
+        <span class="arrow">›</span>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-line"></div>
+    <div class="footer-diamonds">
+      <div class="diam"></div>
+      <div class="diam main"></div>
+      <div class="diam"></div>
+    </div>
+    <p class="foot-verse">"Dieu aime celui qui donne avec joie"</p>
+    <p class="foot-ref">2 Corinthiens 9:7 &nbsp;·&nbsp; Que Dieu bénisse votre offrande</p>
+  </div>
+
+</div>
+</body>
+</html>
